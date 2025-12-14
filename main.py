@@ -6,7 +6,7 @@ and answers queries based only on the policy content with conversation memory.
 
 import os
 from langchain_community.document_loaders import PyPDFLoader
-from langchain_text_splitter import RecursiveCharacterTextSplitter
+from langchain.text_splitter import RecursiveCharacterTextSplitter
 from langchain_openai import OpenAIEmbeddings, ChatOpenAI
 from langchain_community.vectorstores import Chroma
 from langchain.chains import ConversationalRetrievalChain
@@ -178,7 +178,7 @@ def create_rag_chain(vectorstore):
 
     # Custom prompt to reduce hallucinations and keep answers policy-focused
     prompt_template = """ You are expert in reading and interpreting 
-    policies/agreements/legalorders kind of documents which some times use hard to understand 
+    policies/agreements/legal orders kind of documents which some times use hard to understand 
     wordings and clauses which are at times implicitly written are not nakedly understandable.
     
     so, You go through the uploaded policy/agreement/orders which is of PDF format and help the
