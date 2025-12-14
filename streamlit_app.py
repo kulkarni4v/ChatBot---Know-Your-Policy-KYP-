@@ -307,9 +307,9 @@ def stream_response(response_text):
     for char in response_text:
         yield char
         if char in ".!?":
-            time.sleep(0.3)
+            time.sleep(0.1)
         else:
-            time.sleep(0.08)
+            time.sleep(0.02)
 # ============================================================================
 # CHAT INPUT AND RESPONSE
 # ============================================================================
