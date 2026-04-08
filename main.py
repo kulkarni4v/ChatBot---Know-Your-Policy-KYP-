@@ -38,7 +38,7 @@ if not api_key:
     raise ValueError(
         "OpenAI API key not found! Please set it in one of these ways:\n"
         "1. Create a .env file with: OPENAI_API_KEY=your-key-here\n"
-        "2.  Please set it in Streamlit secrets as OPENAI_API_KEY.""
+        "2.  Please set it in Streamlit secrets as OPENAI_API_KEY."
     )
 
 # ============================================================================
