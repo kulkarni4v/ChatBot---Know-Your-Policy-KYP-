@@ -69,8 +69,8 @@ def load_and_process_pdf(pdf_path):
     # - chunk_overlap=200: Overlaps chunks by 200 chars to maintain context continuity
     # - Tries to split on paragraph breaks, then sentences, then words to keep meaning intact
     text_splitter = RecursiveCharacterTextSplitter(
-        chunk_size=1000,
-        chunk_overlap=200,
+        chunk_size=1500,
+        chunk_overlap=300,
         length_function=len,
         separators=["\n\n", "\n", " ", ""]  # Priority order for splitting
     )
@@ -252,9 +252,9 @@ Answer only from the retrieved policy text.
     # - verbose=False: Set to True to see internal chain steps
     chain = ConversationalRetrievalChain.from_llm(
         llm=llm,
-        retriever=vectorstore.as_retriever(
-            search_kwargs={"k": 3}  # Retrieve top 3 most relevant chunks
-        ),
+        retriever = vectorstore.as_retriever(
+    search_type="mmr",
+    search_kwargs={"k": 8, "fetch_k": 20}),
         memory=memory,
         combine_docs_chain_kwargs={"prompt": PROMPT},
         return_source_documents=True,
