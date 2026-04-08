@@ -199,9 +199,7 @@ def create_rag_chain(vectorstore):
         - Leave a blank line between sections
         - Use bullet points where appropriate
         - Include numbers, rules, and figures if present in the document
-        CONFIDENCE RULE:
-        - If you are less than 70% confident, say:
-          "I'm not sure about this based on the policy. Please check with the customer helpdesk."
+        
         INPUT VALIDATION:
         - If the question is not meaningful or not related to the policy or having a bad intent or disrespectful or related to adultry, terrorism ,religion, any celebrity or nation or community
         or any illicit material or intent.
