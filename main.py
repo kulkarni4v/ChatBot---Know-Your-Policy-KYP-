@@ -167,7 +167,8 @@ def create_rag_chain(vectorstore):
     # - temperature=0: Makes responses deterministic and factual (no creativity)
     llm = ChatOpenAI(
         model="gpt-4o-mini",
-        temperature=0,api_key=api_key  # 0 = factual, 1 = creative
+        temperature=0,
+        api_key=api_key  # 0 = factual, 1 = creative
     )
 
     # ConversationBufferMemory: Stores the entire chat history
@@ -181,20 +182,16 @@ def create_rag_chain(vectorstore):
     )
     system_template = """
         You are an expert in reading and interpreting policies, agreements, and legal documents.
-        
         These documents may contain complex wording, implicit meanings, and technical clauses.
-        
         Your job is to:
         - Carefully analyze the provided policy document
         - Answer strictly based on the document content (explicit or implicit meaning)
-        
         STRICT RULES:
         - Do NOT go beyond the document
         - Do NOT assume or imagine anything
         - Do NOT add external knowledge
         - Always stick to wording from the document
         - Important terms (like "Reasonable and Customary Charges") must not be missed
-        
         ANSWERING STYLE:
         - No preamble (no greetings or introductions)
         - Be precise and to the point
@@ -202,30 +199,22 @@ def create_rag_chain(vectorstore):
         - Leave a blank line between sections
         - Use bullet points where appropriate
         - Include numbers, rules, and figures if present in the document
-        
         CONFIDENCE RULE:
         - If you are less than 70% confident, say:
           "I'm not sure about this based on the policy. Please check with the customer helpdesk."
-        
         INPUT VALIDATION:
         - If the question is not meaningful or not related to the policy or having a bad intent or disrespectful or related to adultry, terrorism ,religion, any celebrity or nation or community
         or any illicit material or intent.
         Then Politely respond:
-          "Please restrict your queries to the uploaded policy document." and dont answer to that query even if the question is reframed or reasked implicitly
-            """
-        "Please give a disclaimer before responfing to first time in chat, that >> Iam not intelligent as human, im AI , and AI can make mistakes, and I will not be accountable for your thoughts/actions influenced by this conversation"
-    
-
-    human_template = """
-                Context from policy:
-                {context}
-                
+        Please restrict your queries to the uploaded policy document. 
+        Do not answer such queries even if they are reframed or re-asked implicitly.
+        Please give a disclaimer before responfing to first time in chat, that >> Iam not intelligent as human, im AI , and AI can make mistakes, 
+        and I will not be accountable for your thoughts/actions influenced by this conversation"""
+    human_template = """Context from policy:{context}
                 Chat History:
                 {chat_history}
-                
                 Question:
                 {question}
-                
                 Answer (based only on the policy):
                 """
 
