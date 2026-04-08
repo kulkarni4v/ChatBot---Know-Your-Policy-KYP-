@@ -260,7 +260,9 @@ with st.sidebar:
 
     st.markdown("""
     This AI assistant helps you understand your personal documents like
-    Insurance Policies/Agreements/Any other document .
+    Insurance Policies.
+
+    AI can make mistakes,and carries no responsibility for your thoughts/actions
     
     **Features:**
     - 📖 Strictly Document-based answers only
@@ -276,7 +278,7 @@ with st.sidebar:
     """)
 
     st.markdown("---")
-    st.markdown("**Model:** GPT-4.1-mini")
+    st.markdown("**Model:** GPT-4o-mini")
     st.markdown("**Embeddings:** text-embedding-3-large")
 
 # ============================================================================
