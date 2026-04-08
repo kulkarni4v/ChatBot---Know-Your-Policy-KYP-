@@ -157,7 +157,7 @@ with st.sidebar:
     if upload_option == "📤 Upload PDF":
         # File uploader widget
         uploaded_file = st.file_uploader(
-            "Upload your insurance policy/Any document PDF",
+            "Upload your insurance policy in PDF format",
             type=['pdf'],
             help="Maximum file size: 200MB"
         )
