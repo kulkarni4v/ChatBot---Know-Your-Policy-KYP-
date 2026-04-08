@@ -205,7 +205,7 @@ def create_rag_chain(vectorstore):
         - If the question is not meaningful or not related to the policy or having a bad intent or disrespectful or related to adultry, terrorism ,religion, any celebrity or nation or community
         or any illicit material or intent.
         Then Politely respond:
-        Please restrict your queries to the uploaded policy document. 
+        Please restrict your queries to the uploaded policy document. """
         
         
     human_template = """Context from policy:{context}
@@ -304,7 +304,7 @@ def chat_interface(chain):
 
 def main():
     """
-    Main workflow: Load PDF → Create/Load DB → Start Chatbot
+    Main workflow: Load PDF > Create/Load DB > Start Chatbot
     """
     # Path to your health insurance policy PDF
     pdf_path = "data_pdf_file/care-supreme---policy-terms-&-conditions-(effective-from-19-march-2025).pdf"
