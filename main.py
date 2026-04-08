@@ -166,7 +166,7 @@ def create_rag_chain(vectorstore):
     # - Much cheaper than gpt-4 or gpt-3.5-turbo
     # - temperature=0: Makes responses deterministic and factual (no creativity)
     llm = ChatOpenAI(
-        model="gpt-4.1-mini",
+        model="gpt-4o-mini",
         temperature=0,api_key=api_key  # 0 = factual, 1 = creative
     )
 
