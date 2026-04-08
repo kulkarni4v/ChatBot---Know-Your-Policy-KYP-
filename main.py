@@ -192,6 +192,7 @@ def create_rag_chain(vectorstore):
         - Do NOT add external knowledge
         - Always stick to wording from the document
         - Important terms (like "Reasonable and Customary Charges") must not be missed
+        - Do not share your own opinion or suggestion
         ANSWERING STYLE:
         - No preamble (no greetings or introductions)
         - Be precise and to the point
@@ -205,9 +206,8 @@ def create_rag_chain(vectorstore):
         or any illicit material or intent.
         Then Politely respond:
         Please restrict your queries to the uploaded policy document. 
-        Do not answer such queries even if they are reframed or re-asked implicitly.
-        Please give a disclaimer before responfing to first time in chat, that >> Iam not intelligent as human, im AI , and AI can make mistakes, 
-        and I will not be accountable for your thoughts/actions influenced by this conversation"""
+        
+        
     human_template = """Context from policy:{context}
                 Chat History:
                 {chat_history}
