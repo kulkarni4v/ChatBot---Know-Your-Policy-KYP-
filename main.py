@@ -18,23 +18,27 @@ from langchain.prompts import PromptTemplate
 # ============================================================================
 # API key is loaded from environment variable for security
 # This keeps your key out of version control and source code
-from dotenv import load_dotenv
+# from dotenv import load_dotenv
 
-# load_dotenv(): Reads variables from .env file and loads them into environment
-# - Looks for a .env file in the same directory as this script
-# - Makes variables accessible via os.environ
-load_dotenv()
+# # load_dotenv(): Reads variables from .env file and loads them into environment
+# # - Looks for a .env file in the same directory as this script
+# # - Makes variables accessible via os.environ
+# load_dotenv()
 
-# Get the API key from environment variable
-# - Will be None if not set, which we check below
-api_key = os.getenv("OPENAI_API_KEY")
+# # Get the API key from environment variable
+# # - Will be None if not set, which we check below
+# api_key = os.getenv("OPENAI_API_KEY")
+
+import streamlit as st
+api_key=st.secrets["OPENAI_API_KEY"]
+
 
 # Validate that the API key exists
 if not api_key:
     raise ValueError(
         "OpenAI API key not found! Please set it in one of these ways:\n"
         "1. Create a .env file with: OPENAI_API_KEY=your-key-here\n"
-        "2. Set environment variable: export OPENAI_API_KEY=your-key-here"
+        "2.  Please set it in Streamlit secrets as OPENAI_API_KEY.""
     )
 
 # ============================================================================
@@ -131,7 +135,7 @@ def load_vector_store(persist_directory="./chroma_db"):
     Returns:
         Loaded ChromaDB vector store
     """
-    embeddings = OpenAIEmbeddings(model="text-embedding-3-large")
+    embeddings = OpenAIEmbeddings(model="text-embedding-3-large",api_key=api_key)
 
     # Chroma(): Loads existing database from disk without re-creating embeddings
     vectorstore = Chroma(
@@ -163,7 +167,7 @@ def create_rag_chain(vectorstore):
     # - temperature=0: Makes responses deterministic and factual (no creativity)
     llm = ChatOpenAI(
         model="gpt-4.1-mini",
-        temperature=0  # 0 = factual, 1 = creative
+        temperature=0,api_key=api_key  # 0 = factual, 1 = creative
     )
 
     # ConversationBufferMemory: Stores the entire chat history
