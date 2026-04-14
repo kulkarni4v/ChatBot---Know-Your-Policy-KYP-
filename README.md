@@ -1,5 +1,4 @@
 # ChatBot---Know-Your-Policy-KYP-
-(https://deepwiki.com/kulkarni4v/Langchain-Based-AI-ChatBot---Know-Your-Policy-KYP-)
 
 ## Overview
 
